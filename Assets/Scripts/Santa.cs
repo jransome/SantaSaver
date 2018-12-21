@@ -22,20 +22,9 @@ public class Santa : MonoBehaviour
     }
   }
 
-  public AudioSource audio;
-
   void Update()
   {
-    if (IsAlive)
-    {
-      transform.Rotate(new Vector3(0, 1f, 0));
-    }
-    else
-    {
-      if (audio.pitch > 0.3f) audio.pitch -= 0.003f;
-      if (audio.pitch < 0.5f) audio.Stop();
-      audio.loop = false;
-    }
+    if (IsAlive) transform.Rotate(new Vector3(0, 1f, 0));
   }
 
   void OnCollisionEnter(Collision other)
@@ -48,7 +37,7 @@ public class Santa : MonoBehaviour
       foreach (var Zombie in Zombies)
       {
         Zombie.GetComponent<Zombie>().IsAlive = false;
-        Zombie.GetComponent<Rigidbody>().AddExplosionForce(200f, transform.position, 200f, 2f, ForceMode.Impulse);
+        Zombie.GetComponent<Rigidbody>().AddExplosionForce(100f, transform.position, 200f, 2f, ForceMode.Impulse);
       }
     }
 

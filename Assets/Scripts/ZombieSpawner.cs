@@ -6,10 +6,11 @@ public class ZombieSpawner : MonoBehaviour
 {
   public float SpawnInterval = 1f;
   public float SpawnRadius = 20f;
-  public float SuperChance = 5f;
   public float SuperChanceIncrement = 1f;
   public GameObject ZombiePrefab;
   public Transform Santa;
+
+  public float SuperChance { get; set; } = 5f;
 
   void Start()
   {
