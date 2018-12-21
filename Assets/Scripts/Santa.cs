@@ -1,19 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Santa : MonoBehaviour
 {
   public GameObject DeathExplosion;
   public GameObject SantaModel;
+  public Text GameOverText;
 
   public bool isAlive { get; set; } = true;
+
+  public AudioSource audio;
 
   void Update()
   {
     if (isAlive)
     {
       transform.Rotate(new Vector3(0, 1f, 0));
+    }
+    else
+    {
+      if (audio.pitch > 0.3f) audio.pitch -= 0.003f;
+      if (audio.pitch < 0.5f) audio.Stop();
+      audio.loop = false;
     }
   }
 
@@ -24,6 +34,7 @@ public class Santa : MonoBehaviour
       SantaModel.SetActive(false);
       isAlive = false;
       DeathExplosion.SetActive(true);
+      GameOverText.enabled = true;
 
       GameObject[] Zombies = GameObject.FindGameObjectsWithTag("zombie");
       foreach (var Zombie in Zombies)
