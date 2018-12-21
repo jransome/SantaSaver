@@ -141,7 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718e70e98ced041b7b88c94e95c9eeea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Santa: {fileID: 1562330422}
   InstructionText: {fileID: 1323882667}
+  GameOverText: {fileID: 1051487988}
 --- !u!4 &8438767
 Transform:
   m_ObjectHideFlags: 0
@@ -5349,7 +5351,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Game Over :''''(
+  m_Text: 'Game Over :''''''''(
+
+
+    Hit R to restart!'
 --- !u!222 &1051487989
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5823,7 +5828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeathExplosion: {fileID: 241045116}
   SantaModel: {fileID: 350474110}
-  GameOverText: {fileID: 1051487988}
+  GameManager: {fileID: 8438766}
   audio: {fileID: 1562330423}
 --- !u!82 &1562330423
 AudioSource:

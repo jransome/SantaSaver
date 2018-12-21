@@ -7,15 +7,26 @@ public class Santa : MonoBehaviour
 {
   public GameObject DeathExplosion;
   public GameObject SantaModel;
-  public Text GameOverText;
+  public GameManager GameManager;
 
-  public bool isAlive { get; set; } = true;
+  private bool isAlive = true;
+  public bool IsAlive
+  {
+    get { return isAlive; }
+    set
+    {
+      isAlive = value;
+      SantaModel.SetActive(value);
+      DeathExplosion.SetActive(!value);
+      if(value == false) GameManager.EndGame();
+    }
+  }
 
   public AudioSource audio;
 
   void Update()
   {
-    if (isAlive)
+    if (IsAlive)
     {
       transform.Rotate(new Vector3(0, 1f, 0));
     }
@@ -31,10 +42,7 @@ public class Santa : MonoBehaviour
   {
     if (other.collider.CompareTag("zombie"))
     {
-      SantaModel.SetActive(false);
-      isAlive = false;
-      DeathExplosion.SetActive(true);
-      GameOverText.enabled = true;
+      IsAlive = false;
 
       GameObject[] Zombies = GameObject.FindGameObjectsWithTag("zombie");
       foreach (var Zombie in Zombies)
